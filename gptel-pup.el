@@ -277,7 +277,7 @@ Uses Pup's OpenAI-compatible `/chat/completions' endpoint.  No API
 key is sent: authentication is handled out-of-band by `pup auth
 login', and the server only listens on `gptel-pup-host'."
   (setq gptel-pup-backend
-        (gptel-make-openai "Pup"
+        (gptel-make-openai "pup"
           :host (format "%s:%d" gptel-pup-host gptel-pup-port)
           :protocol "http"
           :endpoint "/chat/completions"
@@ -290,7 +290,7 @@ login', and the server only listens on `gptel-pup-host'."
   "Start (or reuse) the Pup server and open a gptel chat using it."
   (interactive)
   (gptel-pup-start)
-  (with-current-buffer (gptel "*Pup*")
+  (with-current-buffer (gptel "*pup*")
     (setq-local gptel-backend gptel-pup-backend
                 gptel-model (car gptel-pup-models))
     (current-buffer)))
